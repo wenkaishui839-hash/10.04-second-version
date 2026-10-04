@@ -1,0 +1,363 @@
+{
+  "model_type": "padded-original",
+  "device": "cuda",
+  "param_count": 20995072,
+  "total_seconds": 481.85822916030884,
+  "peak_cuda_memory_mb": 425.3876953125,
+  "history": [
+    {
+      "epoch": 1,
+      "seconds": 8.11061954498291,
+      "loss": 1371.7876376953125,
+      "prior_log_likelihood": -1432.3491611328125,
+      "log_det_J": 60.56155014038086
+    },
+    {
+      "epoch": 2,
+      "seconds": 9.050295114517212,
+      "loss": 1309.6449806640626,
+      "prior_log_likelihood": -1430.817321875,
+      "log_det_J": 121.17230224609375
+    },
+    {
+      "epoch": 3,
+      "seconds": 9.40866994857788,
+      "loss": 1248.404949609375,
+      "prior_log_likelihood": -1430.19865078125,
+      "log_det_J": 181.79367065429688
+    },
+    {
+      "epoch": 4,
+      "seconds": 9.383270025253296,
+      "loss": 1187.854812109375,
+      "prior_log_likelihood": -1430.249769140625,
+      "log_det_J": 242.39495849609375
+    },
+    {
+      "epoch": 5,
+      "seconds": 9.630488872528076,
+      "loss": 1127.161215234375,
+      "prior_log_likelihood": -1430.1348384765624,
+      "log_det_J": 302.9736633300781
+    },
+    {
+      "epoch": 6,
+      "seconds": 9.492796421051025,
+      "loss": 1067.1154234375,
+      "prior_log_likelihood": -1430.6219181640624,
+      "log_det_J": 363.5064392089844
+    },
+    {
+      "epoch": 7,
+      "seconds": 11.579038619995117,
+      "loss": 1007.464990625,
+      "prior_log_likelihood": -1431.4238716796874,
+      "log_det_J": 423.9588623046875
+    },
+    {
+      "epoch": 8,
+      "seconds": 10.113237142562866,
+      "loss": 948.8665088867187,
+      "prior_log_likelihood": -1433.224411328125,
+      "log_det_J": 484.35791015625
+    },
+    {
+      "epoch": 9,
+      "seconds": 9.125786066055298,
+      "loss": 888.2631736328125,
+      "prior_log_likelihood": -1432.93795625,
+      "log_det_J": 544.6748046875
+    },
+    {
+      "epoch": 10,
+      "seconds": 8.942554473876953,
+      "loss": 827.8510856445313,
+      "prior_log_likelihood": -1432.7933353515625,
+      "log_det_J": 604.9422607421875
+    },
+    {
+      "epoch": 11,
+      "seconds": 9.179024696350098,
+      "loss": 768.8319434570312,
+      "prior_log_likelihood": -1433.943198046875,
+      "log_det_J": 665.1112670898438
+    },
+    {
+      "epoch": 12,
+      "seconds": 9.320531606674194,
+      "loss": 711.0088126953125,
+      "prior_log_likelihood": -1436.2307615234374,
+      "log_det_J": 725.221923828125
+    },
+    {
+      "epoch": 13,
+      "seconds": 9.39767336845398,
+      "loss": 651.5479068359375,
+      "prior_log_likelihood": -1436.81573203125,
+      "log_det_J": 785.267822265625
+    },
+    {
+      "epoch": 14,
+      "seconds": 9.323351383209229,
+      "loss": 592.6822479492188,
+      "prior_log_likelihood": -1437.9249064453124,
+      "log_det_J": 845.24267578125
+    },
+    {
+      "epoch": 15,
+      "seconds": 10.163539171218872,
+      "loss": 534.7250981445312,
+      "prior_log_likelihood": -1439.8729830078125,
+      "log_det_J": 905.1478881835938
+    },
+    {
+      "epoch": 16,
+      "seconds": 11.013588190078735,
+      "loss": 477.3559181152344,
+      "prior_log_likelihood": -1442.2949447265626,
+      "log_det_J": 964.9390869140625
+    },
+    {
+      "epoch": 17,
+      "seconds": 8.884532690048218,
+      "loss": 417.7643370605469,
+      "prior_log_likelihood": -1442.4274095703124,
+      "log_det_J": 1024.6630859375
+    },
+    {
+      "epoch": 18,
+      "seconds": 9.171306610107422,
+      "loss": 358.3166560058594,
+      "prior_log_likelihood": -1442.654314453125,
+      "log_det_J": 1084.337646484375
+    },
+    {
+      "epoch": 19,
+      "seconds": 9.08317756652832,
+      "loss": 299.55679106445314,
+      "prior_log_likelihood": -1443.2918962890626,
+      "log_det_J": 1143.735107421875
+    },
+    {
+      "epoch": 20,
+      "seconds": 9.158644199371338,
+      "loss": 242.76716364746093,
+      "prior_log_likelihood": -1445.974937890625,
+      "log_det_J": 1203.207763671875
+    },
+    {
+      "epoch": 21,
+      "seconds": 9.296031713485718,
+      "loss": 188.83319211425783,
+      "prior_log_likelihood": -1451.35787109375,
+      "log_det_J": 1262.524658203125
+    },
+    {
+      "epoch": 22,
+      "seconds": 9.545254468917847,
+      "loss": 129.82644326171874,
+      "prior_log_likelihood": -1451.49516328125,
+      "log_det_J": 1321.668701171875
+    },
+    {
+      "epoch": 23,
+      "seconds": 9.224249839782715,
+      "loss": 78.18697510986328,
+      "prior_log_likelihood": -1458.9529384765624,
+      "log_det_J": 1380.7659912109375
+    },
+    {
+      "epoch": 24,
+      "seconds": 9.635498762130737,
+      "loss": 13.951488848876954,
+      "prior_log_likelihood": -1453.3985015625,
+      "log_det_J": 1439.447021484375
+    },
+    {
+      "epoch": 25,
+      "seconds": 10.502039670944214,
+      "loss": -34.637604119873046,
+      "prior_log_likelihood": -1463.47373984375,
+      "log_det_J": 1498.111328125
+    },
+    {
+      "epoch": 26,
+      "seconds": 9.581465482711792,
+      "loss": -96.17028415527344,
+      "prior_log_likelihood": -1460.3077365234376,
+      "log_det_J": 1556.47802734375
+    },
+    {
+      "epoch": 27,
+      "seconds": 9.280298709869385,
+      "loss": -150.81532346191406,
+      "prior_log_likelihood": -1464.2409443359375,
+      "log_det_J": 1615.0562744140625
+    },
+    {
+      "epoch": 28,
+      "seconds": 9.59801983833313,
+      "loss": -206.74318525390626,
+      "prior_log_likelihood": -1466.317358203125,
+      "log_det_J": 1673.060546875
+    },
+    {
+      "epoch": 29,
+      "seconds": 9.370226621627808,
+      "loss": -244.37673122558593,
+      "prior_log_likelihood": -1486.66744765625,
+      "log_det_J": 1731.044189453125
+    },
+    {
+      "epoch": 30,
+      "seconds": 9.880541563034058,
+      "loss": -312.76456127929686,
+      "prior_log_likelihood": -1474.8309109375,
+      "log_det_J": 1787.595458984375
+    },
+    {
+      "epoch": 31,
+      "seconds": 8.92803144454956,
+      "loss": -362.99288920898437,
+      "prior_log_likelihood": -1482.2818884765625,
+      "log_det_J": 1845.2747802734375
+    },
+    {
+      "epoch": 32,
+      "seconds": 9.324405908584595,
+      "loss": -418.9908466796875,
+      "prior_log_likelihood": -1483.5513771484375,
+      "log_det_J": 1902.542236328125
+    },
+    {
+      "epoch": 33,
+      "seconds": 9.39800500869751,
+      "loss": -472.24626806640623,
+      "prior_log_likelihood": -1487.489914453125,
+      "log_det_J": 1959.7362060546875
+    },
+    {
+      "epoch": 34,
+      "seconds": 10.105889081954956,
+      "loss": -515.0877390625,
+      "prior_log_likelihood": -1501.44703515625,
+      "log_det_J": 2016.5347900390625
+    },
+    {
+      "epoch": 35,
+      "seconds": 10.396794319152832,
+      "loss": -573.6989432617188,
+      "prior_log_likelihood": -1499.2976560546874,
+      "log_det_J": 2072.99658203125
+    },
+    {
+      "epoch": 36,
+      "seconds": 10.76362133026123,
+      "loss": -622.49524765625,
+      "prior_log_likelihood": -1506.32115234375,
+      "log_det_J": 2128.81640625
+    },
+    {
+      "epoch": 37,
+      "seconds": 10.653195142745972,
+      "loss": -668.8816745117188,
+      "prior_log_likelihood": -1515.6867271484375,
+      "log_det_J": 2184.568359375
+    },
+    {
+      "epoch": 38,
+      "seconds": 10.651098728179932,
+      "loss": -721.336391015625,
+      "prior_log_likelihood": -1518.8940619140626,
+      "log_det_J": 2240.23046875
+    },
+    {
+      "epoch": 39,
+      "seconds": 10.489214420318604,
+      "loss": -772.7450862304687,
+      "prior_log_likelihood": -1522.2712572265625,
+      "log_det_J": 2295.016357421875
+    },
+    {
+      "epoch": 40,
+      "seconds": 11.072574615478516,
+      "loss": -805.1060384765625,
+      "prior_log_likelihood": -1544.1627478515625,
+      "log_det_J": 2349.268798828125
+    },
+    {
+      "epoch": 41,
+      "seconds": 10.92388367652893,
+      "loss": -868.0769181640625,
+      "prior_log_likelihood": -1535.488958984375,
+      "log_det_J": 2403.56591796875
+    },
+    {
+      "epoch": 42,
+      "seconds": 10.891780853271484,
+      "loss": -902.0452932617187,
+      "prior_log_likelihood": -1555.3141177734376,
+      "log_det_J": 2457.359375
+    },
+    {
+      "epoch": 43,
+      "seconds": 9.703450918197632,
+      "loss": -958.956534375,
+      "prior_log_likelihood": -1552.0541890625,
+      "log_det_J": 2511.0107421875
+    },
+    {
+      "epoch": 44,
+      "seconds": 8.93896198272705,
+      "loss": -1003.7607904296875,
+      "prior_log_likelihood": -1559.0099177734376,
+      "log_det_J": 2562.770751953125
+    },
+    {
+      "epoch": 45,
+      "seconds": 9.02993655204773,
+      "loss": -1047.8083400390624,
+      "prior_log_likelihood": -1568.14600859375,
+      "log_det_J": 2615.954345703125
+    },
+    {
+      "epoch": 46,
+      "seconds": 8.936643123626709,
+      "loss": -1091.5798638671874,
+      "prior_log_likelihood": -1574.788798046875,
+      "log_det_J": 2666.36865234375
+    },
+    {
+      "epoch": 47,
+      "seconds": 9.02128005027771,
+      "loss": -1130.0033822265625,
+      "prior_log_likelihood": -1588.4775556640625,
+      "log_det_J": 2718.48095703125
+    },
+    {
+      "epoch": 48,
+      "seconds": 9.0660982131958,
+      "loss": -1179.163297265625,
+      "prior_log_likelihood": -1591.0744861328126,
+      "log_det_J": 2770.23779296875
+    },
+    {
+      "epoch": 49,
+      "seconds": 8.958925724029541,
+      "loss": -1211.2559138671875,
+      "prior_log_likelihood": -1608.79729921875,
+      "log_det_J": 2820.05322265625
+    },
+    {
+      "epoch": 50,
+      "seconds": 9.137631893157959,
+      "loss": -1264.6726443359375,
+      "prior_log_likelihood": -1606.0866455078126,
+      "log_det_J": 2870.75927734375
+    }
+  ],
+  "checkpoint": "runs\\padded_original_nice_e50\\padded-original_nice.pt",
+  "sample_image": "runs\\padded_original_nice_e50\\samples_epoch_last.png",
+  "scaling_weights_pt": "runs\\padded_original_nice_e50\\scaling_weights.pt",
+  "scaling_weights_txt": "runs\\padded_original_nice_e50\\scaling_weights.txt"
+}

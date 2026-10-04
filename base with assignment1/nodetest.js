@@ -1,0 +1,1 @@
+console.log("Node.js 安装成功啦！");

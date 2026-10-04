@@ -1,0 +1,364 @@
+{
+  "model_type": "circulant",
+  "device": "cuda",
+  "param_count": 104272,
+  "total_seconds": 443.04676580429077,
+  "peak_cuda_memory_mb": 307.35400390625,
+  "history": [
+    {
+      "epoch": 1,
+      "seconds": 8.617985010147095,
+      "loss": 1054.4053443359376,
+      "prior_log_likelihood": -1100.781223828125,
+      "log_det_J": 46.37583923339844
+    },
+    {
+      "epoch": 2,
+      "seconds": 8.522956371307373,
+      "loss": 1008.6066150390625,
+      "prior_log_likelihood": -1101.3157310546876,
+      "log_det_J": 92.70909118652344
+    },
+    {
+      "epoch": 3,
+      "seconds": 8.64899492263794,
+      "loss": 962.7184924804687,
+      "prior_log_likelihood": -1101.6798947265625,
+      "log_det_J": 138.96141052246094
+    },
+    {
+      "epoch": 4,
+      "seconds": 8.724675416946411,
+      "loss": 916.2073838867187,
+      "prior_log_likelihood": -1101.4185265625,
+      "log_det_J": 185.21121215820312
+    },
+    {
+      "epoch": 5,
+      "seconds": 8.750968217849731,
+      "loss": 870.2559732421875,
+      "prior_log_likelihood": -1101.70776171875,
+      "log_det_J": 231.45181274414062
+    },
+    {
+      "epoch": 6,
+      "seconds": 8.832128047943115,
+      "loss": 824.7905129882812,
+      "prior_log_likelihood": -1102.4179779296876,
+      "log_det_J": 277.6274108886719
+    },
+    {
+      "epoch": 7,
+      "seconds": 8.68290400505066,
+      "loss": 779.0501416992188,
+      "prior_log_likelihood": -1102.8232865234374,
+      "log_det_J": 323.77313232421875
+    },
+    {
+      "epoch": 8,
+      "seconds": 8.788218259811401,
+      "loss": 734.011768359375,
+      "prior_log_likelihood": -1103.8695126953126,
+      "log_det_J": 369.85772705078125
+    },
+    {
+      "epoch": 9,
+      "seconds": 8.624534130096436,
+      "loss": 689.4036446289062,
+      "prior_log_likelihood": -1105.2399685546875,
+      "log_det_J": 415.8363342285156
+    },
+    {
+      "epoch": 10,
+      "seconds": 8.808977842330933,
+      "loss": 644.92213671875,
+      "prior_log_likelihood": -1106.65755078125,
+      "log_det_J": 461.73541259765625
+    },
+    {
+      "epoch": 11,
+      "seconds": 8.686331033706665,
+      "loss": 605.44731953125,
+      "prior_log_likelihood": -1112.9486810546875,
+      "log_det_J": 507.5013732910156
+    },
+    {
+      "epoch": 12,
+      "seconds": 8.69059133529663,
+      "loss": 557.2715852539062,
+      "prior_log_likelihood": -1110.346531640625,
+      "log_det_J": 553.074951171875
+    },
+    {
+      "epoch": 13,
+      "seconds": 8.694993495941162,
+      "loss": 513.358809375,
+      "prior_log_likelihood": -1111.9243548828124,
+      "log_det_J": 598.5655517578125
+    },
+    {
+      "epoch": 14,
+      "seconds": 8.708720445632935,
+      "loss": 470.0364140625,
+      "prior_log_likelihood": -1113.93327734375,
+      "log_det_J": 643.8968505859375
+    },
+    {
+      "epoch": 15,
+      "seconds": 8.663314580917358,
+      "loss": 428.4575200683594,
+      "prior_log_likelihood": -1117.5030390625,
+      "log_det_J": 689.0455322265625
+    },
+    {
+      "epoch": 16,
+      "seconds": 8.73097825050354,
+      "loss": 385.11610244140627,
+      "prior_log_likelihood": -1119.079101171875,
+      "log_det_J": 733.9630126953125
+    },
+    {
+      "epoch": 17,
+      "seconds": 8.629737615585327,
+      "loss": 342.6077678222656,
+      "prior_log_likelihood": -1121.3539091796874,
+      "log_det_J": 778.7461547851562
+    },
+    {
+      "epoch": 18,
+      "seconds": 8.832302331924438,
+      "loss": 300.99499545898436,
+      "prior_log_likelihood": -1124.2320708984375,
+      "log_det_J": 823.237060546875
+    },
+    {
+      "epoch": 19,
+      "seconds": 8.626541137695312,
+      "loss": 260.6137476074219,
+      "prior_log_likelihood": -1128.232633984375,
+      "log_det_J": 867.618896484375
+    },
+    {
+      "epoch": 20,
+      "seconds": 8.778319358825684,
+      "loss": 222.3685072753906,
+      "prior_log_likelihood": -1134.143518359375,
+      "log_det_J": 911.7750244140625
+    },
+    {
+      "epoch": 21,
+      "seconds": 8.682789087295532,
+      "loss": 179.52949030761718,
+      "prior_log_likelihood": -1135.170390234375,
+      "log_det_J": 955.640869140625
+    },
+    {
+      "epoch": 22,
+      "seconds": 8.569779396057129,
+      "loss": 139.79311201171876,
+      "prior_log_likelihood": -1138.9954576171874,
+      "log_det_J": 999.2023315429688
+    },
+    {
+      "epoch": 23,
+      "seconds": 9.089866399765015,
+      "loss": 100.92928365478515,
+      "prior_log_likelihood": -1143.458697265625,
+      "log_det_J": 1042.5294189453125
+    },
+    {
+      "epoch": 24,
+      "seconds": 9.302330493927002,
+      "loss": 61.15110471801758,
+      "prior_log_likelihood": -1146.589121875,
+      "log_det_J": 1085.43798828125
+    },
+    {
+      "epoch": 25,
+      "seconds": 8.83227014541626,
+      "loss": 23.910638958740236,
+      "prior_log_likelihood": -1152.0681033203125,
+      "log_det_J": 1128.157470703125
+    },
+    {
+      "epoch": 26,
+      "seconds": 8.79127836227417,
+      "loss": -12.72649638671875,
+      "prior_log_likelihood": -1157.5730712890625,
+      "log_det_J": 1170.299560546875
+    },
+    {
+      "epoch": 27,
+      "seconds": 8.839504718780518,
+      "loss": -46.539464709472654,
+      "prior_log_likelihood": -1165.8666326171874,
+      "log_det_J": 1212.4061279296875
+    },
+    {
+      "epoch": 28,
+      "seconds": 8.637051820755005,
+      "loss": -83.47708955078124,
+      "prior_log_likelihood": -1170.42646484375,
+      "log_det_J": 1253.903564453125
+    },
+    {
+      "epoch": 29,
+      "seconds": 8.556071758270264,
+      "loss": -121.63633184814454,
+      "prior_log_likelihood": -1173.4858837890624,
+      "log_det_J": 1295.1221923828125
+    },
+    {
+      "epoch": 30,
+      "seconds": 8.583879232406616,
+      "loss": -157.94395732421876,
+      "prior_log_likelihood": -1178.019908203125,
+      "log_det_J": 1335.9638671875
+    },
+    {
+      "epoch": 31,
+      "seconds": 8.654378652572632,
+      "loss": -188.60235893554687,
+      "prior_log_likelihood": -1186.70013671875,
+      "log_det_J": 1375.302490234375
+    },
+    {
+      "epoch": 32,
+      "seconds": 8.604743480682373,
+      "loss": -219.9048372314453,
+      "prior_log_likelihood": -1195.550396875,
+      "log_det_J": 1415.4552001953125
+    },
+    {
+      "epoch": 33,
+      "seconds": 9.028568267822266,
+      "loss": -254.0253852294922,
+      "prior_log_likelihood": -1201.1362345703126,
+      "log_det_J": 1455.16162109375
+    },
+    {
+      "epoch": 34,
+      "seconds": 8.973641157150269,
+      "loss": -290.66513720703125,
+      "prior_log_likelihood": -1203.4727880859375,
+      "log_det_J": 1494.137939453125
+    },
+    {
+      "epoch": 35,
+      "seconds": 8.969345808029175,
+      "loss": -317.37214296875,
+      "prior_log_likelihood": -1215.4752501953126,
+      "log_det_J": 1532.847412109375
+    },
+    {
+      "epoch": 36,
+      "seconds": 9.016433715820312,
+      "loss": -331.6045333984375,
+      "prior_log_likelihood": -1239.33968359375,
+      "log_det_J": 1570.9442138671875
+    },
+    {
+      "epoch": 37,
+      "seconds": 8.951447486877441,
+      "loss": -381.0215232421875,
+      "prior_log_likelihood": -1227.0883400390626,
+      "log_det_J": 1608.10986328125
+    },
+    {
+      "epoch": 38,
+      "seconds": 8.952789306640625,
+      "loss": -409.7190214355469,
+      "prior_log_likelihood": -1235.40329375,
+      "log_det_J": 1645.122314453125
+    },
+    {
+      "epoch": 39,
+      "seconds": 8.880255699157715,
+      "loss": -443.36193017578125,
+      "prior_log_likelihood": -1238.5026953125,
+      "log_det_J": 1681.8646240234375
+    },
+    {
+      "epoch": 40,
+      "seconds": 8.92342472076416,
+      "loss": -472.8757927734375,
+      "prior_log_likelihood": -1244.6044505859375,
+      "log_det_J": 1717.480224609375
+    },
+    {
+      "epoch": 41,
+      "seconds": 8.921460151672363,
+      "loss": -498.9218675292969,
+      "prior_log_likelihood": -1254.3519150390625,
+      "log_det_J": 1753.2738037109375
+    },
+    {
+      "epoch": 42,
+      "seconds": 9.172678470611572,
+      "loss": -522.911854296875,
+      "prior_log_likelihood": -1265.0466134765625,
+      "log_det_J": 1787.95849609375
+    },
+    {
+      "epoch": 43,
+      "seconds": 9.106104373931885,
+      "loss": -551.11745078125,
+      "prior_log_likelihood": -1271.4716447265625,
+      "log_det_J": 1822.589111328125
+    },
+    {
+      "epoch": 44,
+      "seconds": 8.915031909942627,
+      "loss": -559.503775390625,
+      "prior_log_likelihood": -1297.1705439453126,
+      "log_det_J": 1856.67431640625
+    },
+    {
+      "epoch": 45,
+      "seconds": 9.017910242080688,
+      "loss": -609.3754060546875,
+      "prior_log_likelihood": -1280.4380517578124,
+      "log_det_J": 1889.8134765625
+    },
+    {
+      "epoch": 46,
+      "seconds": 9.007831335067749,
+      "loss": -634.2992112304687,
+      "prior_log_likelihood": -1288.069417578125,
+      "log_det_J": 1922.36865234375
+    },
+    {
+      "epoch": 47,
+      "seconds": 8.990382194519043,
+      "loss": -665.3207583984375,
+      "prior_log_likelihood": -1289.3147458984374,
+      "log_det_J": 1954.635498046875
+    },
+    {
+      "epoch": 48,
+      "seconds": 9.437620162963867,
+      "loss": -683.77204140625,
+      "prior_log_likelihood": -1302.8916453125,
+      "log_det_J": 1986.6636962890625
+    },
+    {
+      "epoch": 49,
+      "seconds": 10.267277002334595,
+      "loss": -712.4642986328125,
+      "prior_log_likelihood": -1305.64276328125,
+      "log_det_J": 2018.1070556640625
+    },
+    {
+      "epoch": 50,
+      "seconds": 9.31307315826416,
+      "loss": -733.7846426757812,
+      "prior_log_likelihood": -1315.7968830078125,
+      "log_det_J": 2049.58154296875
+    }
+  ],
+  "checkpoint": "runs\\block_circulant_nice_e50\\circulant_nice.pt",
+  "sample_image": "runs\\block_circulant_nice_e50\\samples_epoch_last.png",
+  "circulant_layer_count": 24,
+  "circulant_weights_pt": "runs\\block_circulant_nice_e50\\circulant_weights.pt",
+  "circulant_weights_txt": "runs\\block_circulant_nice_e50\\circulant_weights.txt"
+}
