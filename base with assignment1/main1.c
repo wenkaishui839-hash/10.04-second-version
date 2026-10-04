@@ -63,9 +63,20 @@ int main() {
                REPS, secs, secs / REPS * 1e6);
     }
 
-    /* 抽样检查输出前几个频点 (确认结果正确) */
-    printf("Check: Y[0]=%.4f Y[1]=%.4f Y[%d]=%.4f\n",
-           (double)Y[0], (double)Y[1], N/2, (double)Y[N/2]);
+    /* 抽样检查频点 (确认结果正确)。注意: 上面 REPS 次连续 FFT 会把幅度放大
+     * sqrt(N)^REPS 倍溢出为 nan (预期现象, 不代表算子错误), 故这里先重置
+     * 测试信号再单独做一次 FFT。本段在 END 之后, 不影响计数与计时区间。 */
+    for (int n = 0; n < N; n++) {
+        Y[n] = (float)sin(2.0 * M_PI * n / N)
+             + 0.5f * (float)sin(4.0 * M_PI * n / N);
+    }
+    execute_rdfft_rvv_f32(Y, W_re, W_im, N);
+    /* 期望值: 信号 = sin(2πn/N) + 0.5·sin(4πn/N), 半复数布局 Y[k]=Re(F[k]),
+     * Y[N-k]=Im(F[k])。故 Y[0]=0 (直流), Y[1]=Re(F[1])=0,
+     * Y[N/2]=0 (奈奎斯特), Y[N-1]=Im(F[1])=-N/2=-128, Y[N-2]=Im(F[2])=-N/4=-64。 */
+    printf("Check: Y[0]=%.4f Y[1]=%.4f Y[%d]=%.4f Y[%d]=%.4f Y[%d]=%.4f\n",
+           (double)Y[0], (double)Y[1], N/2, (double)Y[N/2],
+           N-1, (double)Y[N-1], N-2, (double)Y[N-2]);
 
     free(Y); free(W_re); free(W_im);
     return 0;
