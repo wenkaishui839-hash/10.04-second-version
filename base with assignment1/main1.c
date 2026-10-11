@@ -5,7 +5,7 @@
 #include <math.h>
 
 extern void execute_rdfft_rvv_f32(float* Y, const float* W_re, const float* W_im, int N);
-extern void generate_rdfft_twiddle_factors(float* W_re, float* W_im, int N);
+extern void generate_rdfft_twiddle_factors_staged(float* W_re, float* W_im, int N);
 
 /* 板上计时: 直接发 SYS_clock_gettime(CLOCK_MONOTONIC) (riscv64 __NR=113),
  * 不引入 libc 符号 (与任务四 infer_main.c 的 now_monotonic 同理)。
@@ -37,7 +37,7 @@ int main() {
     }
 
     /* 预生成旋转因子 (不计时) */
-    generate_rdfft_twiddle_factors(W_re, W_im, N);
+    generate_rdfft_twiddle_factors_staged(W_re, W_im, N);
 
     /* 预热 */
     for (int r = 0; r < WARMUP; r++) {

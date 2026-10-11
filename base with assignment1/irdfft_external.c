@@ -22,21 +22,29 @@ extern void irdfft_butterfly_compute(float* Y, const float* W_re, const float* W
                                      int N, int half_step, int base);
 
 /* 位反转置换 (对 N 个实数做索引层面的重排, O(N))
- * 与 external.c 中的实现逻辑一致; 设为 static 避免与正变换链接冲突 */
+ * 与 external.c 中的实现逻辑一致; 设为 static 避免与正变换链接冲突。
+ * v2 优化: 置换表预计算一次 + 查表交换 (见 external.c 注释)。 */
+static uint32_t g_rev_table[1024];
+static int      g_rev_table_n = 0;
+
 static void bit_reverse_permutation(float* Y, int N) {
-    int j = 0;
-    for (int i = 0; i < N - 1; i++) {
-        if (i < j) {
+    if (g_rev_table_n != N) {
+        int bits = 0;
+        for (int t = N >> 1; t > 0; t >>= 1) bits++;
+        for (int i = 0; i < N; i++) {
+            uint32_t j = 0;
+            for (int b = 0; b < bits; b++) j = (j << 1) | ((uint32_t)(i >> b) & 1u);
+            g_rev_table[i] = j;
+        }
+        g_rev_table_n = N;
+    }
+    for (int i = 0; i < N; i++) {
+        uint32_t j = g_rev_table[i];
+        if (i < (int)j) {
             float temp = Y[i];
             Y[i] = Y[j];
             Y[j] = temp;
         }
-        int k = N / 2;
-        while (k <= j) {
-            j -= k;
-            k /= 2;
-        }
-        j += k;
     }
 }
 

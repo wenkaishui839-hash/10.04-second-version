@@ -23,8 +23,9 @@
  * 输出 O 块 [base+M, base+2M): Re@base+M+k, Im@base+2M-k
  *
  * @param Y         数据数组 (N 个 float, 半复数格式, 原地计算)
- * @param W_re      旋转因子实部表 (与正变换共用, 存的是正变换因子)
- * @param W_im      旋转因子虚部表
+ * @param W_re      逐级连续旋转因子表 (与正变换共用, 存的是正变换因子,
+ *                  本阶段偏移 = M/2 - 1, 蝶形内连续 vle32 加载)
+ * @param W_im      旋转因子虚部表 (同上)
  * @param N         总点数
  * @param half_step 当前蝶形跨度 M
  * @param base      当前组起始索引
@@ -35,7 +36,7 @@ void irdfft_butterfly_compute(float* Y, const float* W_re, const float* W_im,
                               int N, int half_step, int base) {
 
     int M = half_step;
-    int twiddle_stride = N / (2 * M);
+    (void)N;   /* N 仅在旧版 strided 表寻址中使用, v2 逐级表不再需要 */
 
     /* ==========================================================
      * Case 1: k = 0 — DC (W=1)
@@ -95,13 +96,9 @@ void irdfft_butterfly_compute(float* Y, const float* W_re, const float* W_im,
             vfloat32m1_t v_b = __riscv_vrgather_vv_f32m1(v_b_raw, v_rev_idx, vl);
             vfloat32m1_t v_c = __riscv_vrgather_vv_f32m1(v_c_raw, v_rev_idx, vl);
 
-            /* --- strided 旋转因子加载 (与正变换共用同一张表) --- */
-            vfloat32m1_t v_W_re = __riscv_vlse32_v_f32m1(
-                &W_re[k_idx * twiddle_stride],
-                twiddle_stride * (int)sizeof(float), vl);
-            vfloat32m1_t v_W_im = __riscv_vlse32_v_f32m1(
-                &W_im[k_idx * twiddle_stride],
-                twiddle_stride * (int)sizeof(float), vl);
+            /* --- 旋转因子: 逐级连续表 (v2 优化, 阶段偏移 = M/2-1, 替代 vlse32) --- */
+            vfloat32m1_t v_W_re = __riscv_vle32_v_f32m1(&W_re[(M / 2 - 1) + k_idx], vl);
+            vfloat32m1_t v_W_im = __riscv_vle32_v_f32m1(&W_im[(M / 2 - 1) + k_idx], vl);
 
             /* --- 2*E[k] = X[k] + conj(X[M-k]) = (a+c) + j(b-d) --- */
             vfloat32m1_t v_ek_re = __riscv_vfadd_vv_f32m1(v_a, v_c, vl);

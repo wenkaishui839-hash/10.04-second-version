@@ -28,10 +28,11 @@ PK=$HOME/riscv/riscv64-unknown-linux-gnu/bin/pk
 
 # 推理主逻辑: VM 上的 inference.c 已手工 RVV 化 (relu/累加等), 无法用无 V 扩展的
 # -march=rv64gc 编译; 标量基线改用其纯标量孪生文件 inference_scalar.c。
-RVV_SRCS="circulant_rvv.c twiddle_factors.c rdfft_butterfly_compute.c \
-          irdfft_butterfly_compute.c irdfft_half_complex_mul.c \
-          irdfft_circulant.c irdfft_external.c external.c"
-SCALAR_SRCS="circulant_scalar.c"
+RVV_SRCS="circulant_v3.c twiddle_factors.c rdfft_butterfly_compute.c \
+          irdfft_butterfly_compute.c irdfft_half_complex_mul_v3.c \
+          external_v3.c irdfft_external_v3.c \
+          rdfft_butterfly_v3.c irdfft_butterfly_v3.c"
+SCALAR_SRCS="circulant_scalar_v3.c"
 
 echo "== [1/5] 编译 (同编译器同 -O3, 标量版无 V 扩展) =="
 $CC -march=rv64gcv -static -O3 -o nice_infer_rvv \

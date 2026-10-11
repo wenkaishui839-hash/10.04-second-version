@@ -166,17 +166,42 @@ void circulant_op_init(int N) {
   generate_irdfft_twiddle_factors(g_IW_re, g_IW_im, N);
 }
 
+/* ---- v3 优化: 权重频谱缓存 (与 RVV 版 irdfft_circulant.c 同设计) ----
+ * 权重在推理中固定, 按指针缓存其 rdFFT 频谱, 首次计算后直接复用;
+ * 缓存频谱只读, 频域乘结果写入独立的 buf_y (不可覆盖缓存)。 ---- */
+typedef struct { const float *w; float *W_hc; } WCached;
+
+static WCached *g_wcache = NULL;
+static int g_wcache_n = 0, g_wcache_cap = 0;
+
+static const float *wspectrum_get(const float *w, const float *W_re,
+                                  const float *W_im, int N) {
+  for (int i = 0; i < g_wcache_n; i++)
+    if (g_wcache[i].w == w) return g_wcache[i].W_hc;
+  if (g_wcache_n == g_wcache_cap) {
+    int nc = g_wcache_cap ? g_wcache_cap * 2 : 128;
+    g_wcache = (WCached *)realloc(g_wcache, (size_t)nc * sizeof(WCached));
+    g_wcache_cap = nc;
+  }
+  float *W_hc = (float *)malloc((size_t)N * sizeof(float));
+  memcpy(W_hc, w, (size_t)N * sizeof(float));
+  execute_rdfft_f32(W_hc, W_re, W_im, N);
+  g_wcache[g_wcache_n].w = w;
+  g_wcache[g_wcache_n].W_hc = W_hc;
+  g_wcache_n++;
+  return W_hc;
+}
+
 void circulant_op_f32(const float *w, const float *x, float *y, int N) {
   if (g_N != N) circulant_op_init(N);
-  float *buf_w = (float *)malloc((size_t)N * sizeof(float));
+  const float *buf_w = wspectrum_get(w, g_W_re, g_W_im, N);  /* 缓存, 只读 */
   float *buf_x = (float *)malloc((size_t)N * sizeof(float));
-  memcpy(buf_w, w, (size_t)N * sizeof(float));
+  float *buf_y = (float *)malloc((size_t)N * sizeof(float));
   memcpy(buf_x, x, (size_t)N * sizeof(float));
-  execute_rdfft_f32(buf_w, g_W_re, g_W_im, N);
   execute_rdfft_f32(buf_x, g_W_re, g_W_im, N);
-  half_complex_mul(buf_w, buf_x, buf_w, N);
-  execute_irdfft_f32(buf_w, g_IW_re, g_IW_im, N);
-  memcpy(y, buf_w, (size_t)N * sizeof(float));
-  free(buf_w);
+  half_complex_mul(buf_w, buf_x, buf_y, N);
+  execute_irdfft_f32(buf_y, g_IW_re, g_IW_im, N);
+  memcpy(y, buf_y, (size_t)N * sizeof(float));
   free(buf_x);
+  free(buf_y);
 }

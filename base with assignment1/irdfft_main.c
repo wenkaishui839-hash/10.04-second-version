@@ -22,7 +22,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-extern void generate_rdfft_twiddle_factors(float* W_re, float* W_im, int N);
+extern void generate_rdfft_twiddle_factors_staged(float* W_re, float* W_im, int N);
 extern void execute_rdfft_rvv_f32(float* Y, const float* W_re, const float* W_im, int N);
 extern void execute_irdfft_rvv_f32(float* Y, const float* W_re, const float* W_im, int N);
 extern void circulant_matmul_rvv_f32(const float* w, const float* x, float* y,
@@ -75,7 +75,7 @@ static void test_roundtrip(int N) {
         Y[n] = x[n];
     }
 
-    generate_rdfft_twiddle_factors(W_re, W_im, N);
+    generate_rdfft_twiddle_factors_staged(W_re, W_im, N);
 
     /* 正向 rdFFT, 与参考 DFT 比对 */
     execute_rdfft_rvv_f32(Y, W_re, W_im, N);
@@ -144,7 +144,7 @@ static void test_circulant(int N) {
         y_ref[n] = (float)acc;
     }
 
-    generate_rdfft_twiddle_factors(W_re, W_im, N);
+    generate_rdfft_twiddle_factors_staged(W_re, W_im, N);
     circulant_matmul_rvv_f32(w, x, y_fft, W_re, W_im, N);
 
     double max_err = 0.0, mse = 0.0;
@@ -201,7 +201,7 @@ static int cli_mode(int argc, char** argv) {
     fclose(fw);
     fclose(fx);
 
-    generate_rdfft_twiddle_factors(W_re, W_im, N);
+    generate_rdfft_twiddle_factors_staged(W_re, W_im, N);
     circulant_matmul_rvv_f32(w, x, y, W_re, W_im, N);
 
     FILE* fy = fopen(argv[4], "wb");

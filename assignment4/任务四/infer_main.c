@@ -101,6 +101,14 @@ int main(int argc, char **argv) {
 
   circulant_op_init(NICE_BLOCK);
 
+  /* v3: 加载期预计算全部权重频谱并注册 (前向推理过程零 malloc) */
+  for (int i = 0; i < model.n_layers; i++) {
+    const BlockCirculantLayer *L = &model.layers[i];
+    int nblocks = L->n_block_rows * L->n_block_cols;
+    for (int j = 0; j < nblocks; j++)
+      circulant_op_prepare_weight(L->weight + (size_t)j * L->block_size);
+  }
+
   /* 预热 1 次: 板上避开冷缓存/首次缺页混入计时 (在计数区间外, 不影响跑分) */
   nice_sample(&model, z, x_out, work);
 

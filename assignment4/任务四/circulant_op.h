@@ -20,6 +20,9 @@ extern "C" {
 /* 预计算 N 点旋转因子表 (调用一次即可)。 */
 void circulant_op_init(int N);
 
+/* v3: 权重频谱预计算注册 (加载期调用一次即可; 前向过程零 malloc)。 */
+void circulant_op_prepare_weight(const float *w);
+
 /* 循环卷积算子: y = C(w) * x。 */
 void circulant_op_f32(const float *w, const float *x, float *y, int N);
 

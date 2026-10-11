@@ -15,7 +15,7 @@
 #include "circulant_op.h"
 
 /* 任务一 RVV 算子 (位于上级目录 dachuang/, 与 rdfft_*.c / irdfft_*.c 一起链接) */
-extern void generate_rdfft_twiddle_factors(float *W_re, float *W_im, int N);
+extern void generate_rdfft_twiddle_factors_staged(float *W_re, float *W_im, int N);
 extern void circulant_matmul_rvv_f32(const float *w, const float *x, float *y,
                                      const float *W_re, const float *W_im, int N);
 
@@ -30,7 +30,7 @@ void circulant_op_init(int N) {
   g_N = N;
   g_W_re = (float *)malloc((size_t)(N / 2) * sizeof(float));
   g_W_im = (float *)malloc((size_t)(N / 2) * sizeof(float));
-  generate_rdfft_twiddle_factors(g_W_re, g_W_im, N);
+  generate_rdfft_twiddle_factors_staged(g_W_re, g_W_im, N);
 }
 
 void circulant_op_f32(const float *w, const float *x, float *y, int N) {

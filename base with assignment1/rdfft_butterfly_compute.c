@@ -11,8 +11,9 @@
  * 不创建复数临时变量，不分配额外内存，真正实现"零缓存真原地"。
  *
  * @param Y         数据数组 (N 个 float)
- * @param W_re      旋转因子实部表 (N 点 DFT 因子)
- * @param W_im      旋转因子虚部表
+ * @param W_re      逐级连续旋转因子表 (generate_rdfft_twiddle_factors_staged,
+ *                  本阶段偏移 = M/2 - 1, 蝶形内连续 vle32 加载)
+ * @param W_im      旋转因子虚部表 (同上)
  * @param N         总点数
  * @param half_step 当前蝶形跨度 M
  * @param base      当前组起始索引
@@ -21,7 +22,7 @@ void rdfft_butterfly_compute(float* Y, const float* W_re, const float* W_im,
                               int N, int half_step, int base) {
 
     int M = half_step;
-    int twiddle_stride = N / (2 * M);
+    (void)N;   /* N 仅在旧版 strided 表寻址中使用, v2 逐级表不再需要 */
 
     // ==========================================================
     // Case 1: k = 0 — DC 蝶形 (纯实数加减)
@@ -77,13 +78,9 @@ void rdfft_butterfly_compute(float* Y, const float* W_re, const float* W_im,
             vfloat32m1_t v_E_im = __riscv_vrgather_vv_f32m1(v_E_im_raw, v_rev_idx, vl);
             vfloat32m1_t v_O_im = __riscv_vrgather_vv_f32m1(v_O_im_raw, v_rev_idx, vl);
 
-            // --- strided 旋转因子加载 ---
-            vfloat32m1_t v_W_re = __riscv_vlse32_v_f32m1(
-                &W_re[k_idx * twiddle_stride],
-                twiddle_stride * (int)sizeof(float), vl);
-            vfloat32m1_t v_W_im = __riscv_vlse32_v_f32m1(
-                &W_im[k_idx * twiddle_stride],
-                twiddle_stride * (int)sizeof(float), vl);
+            // --- 旋转因子: 逐级连续表 (v2 优化, 阶段偏移 = M/2-1, 替代 vlse32) ---
+            vfloat32m1_t v_W_re = __riscv_vle32_v_f32m1(&W_re[(M / 2 - 1) + k_idx], vl);
+            vfloat32m1_t v_W_im = __riscv_vle32_v_f32m1(&W_im[(M / 2 - 1) + k_idx], vl);
 
             // --- T = W * O (复数乘法) ---
             vfloat32m1_t v_T_re = __riscv_vfmul_vv_f32m1(v_W_re, v_O_re, vl);

@@ -24,18 +24,19 @@ LOAD_SRCS = load_weights.c main.c
 
 # ---- 第二步: NICE 前向推理 (标量算子, x86 主机校验) ----
 INFER_BIN  = nice_infer
-INFER_SRCS = load_weights.c circulant_scalar.c inference.c infer_main.c
+INFER_SRCS = load_weights.c circulant_scalar_v3.c inference.c infer_main.c
 
 # ---- 第三步: NICE 前向推理 (RVV 算子, RISC-V + Spike) ----
 INFER_RVV_BIN = nice_infer_rvv
 RVVPATH       = ..
-INFER_RVV_SRCS = load_weights.c inference.c infer_main.c circulant_rvv.c \
+INFER_RVV_SRCS = load_weights.c inference.c infer_main.c circulant_v3.c \
                  $(RVVPATH)/irdfft_butterfly_compute.c \
-                 $(RVVPATH)/irdfft_external.c \
-                 $(RVVPATH)/irdfft_half_complex_mul.c \
-                 $(RVVPATH)/irdfft_circulant.c \
+                 $(RVVPATH)/irdfft_butterfly_v3.c \
+                 $(RVVPATH)/irdfft_external_v3.c \
+                 $(RVVPATH)/irdfft_half_complex_mul_v3.c \
                  $(RVVPATH)/rdfft_butterfly_compute.c \
-                 $(RVVPATH)/external.c \
+                 $(RVVPATH)/rdfft_butterfly_v3.c \
+                 $(RVVPATH)/external_v3.c \
                  $(RVVPATH)/twiddle_factors.c
 
 # Spike + proxy kernel 路径 (按虚拟机实际安装位置调整)

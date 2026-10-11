@@ -3,6 +3,16 @@
 > 本目录基于上游 [pytorch-generative](https://github.com/EugenHotaj/pytorch-generative) 修改，
 > 原始上游文档见文末。
 
+## 上位机 FFT 参考实验（block_circ_fftw_op_with_init.html）
+
+`block_circ_fftw_op_with_init.html`（Jupyter 导出，77 个代码块）是早期的
+block-circulant 矩阵乘上位机参考实验：用 `torch.fft.rfft/irfft` 实现
+`block_circ_fftw_matmul` 并与显式矩阵乘对拍（正确性 + x86 计时，如 150ms/1s/2s
+量级）。文件名中的 fftw 指当时参考 FFTW 的实现思路，代码实际使用 PyTorch 的
+FFT（CPU 端 pocketfft）。本实验是任务一 README 表 1"C 算子 vs torch.fft 精度
+对齐"的上位机先导，与板载 kissfft 性能对比（任务一 README）构成"现有 FFT 库"
+对比的三个口径：torch.fft（x86 精度）→ kissfft（同板性能）→ FFTW（可选附录）。
+
 ## 本任务做了什么
 
 1. **循环层算子**（`pytorch_generative/nn/circulant_linear.py`）：新增

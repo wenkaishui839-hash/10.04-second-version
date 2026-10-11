@@ -4,7 +4,7 @@
 #include <math.h>
 
 extern void execute_rdfft_rvv_f32(float* Y, const float* W_re, const float* W_im, int N);
-extern void generate_rdfft_twiddle_factors(float* W_re, float* W_im, int N);
+extern void generate_rdfft_twiddle_factors_staged(float* W_re, float* W_im, int N);
 
 /**
  * 参考 DFT (直接按定义计算, O(N²), 作为真值基准)
@@ -46,7 +46,7 @@ int main() {
     reference_dft(x, N, ref_re, ref_im);
 
     // 2. rdFFT 旋转因子 + 执行
-    generate_rdfft_twiddle_factors(W_re, W_im, N);
+    generate_rdfft_twiddle_factors_staged(W_re, W_im, N);
     execute_rdfft_rvv_f32(Y, W_re, W_im, N);
 
     // 3. 逐频点对比
